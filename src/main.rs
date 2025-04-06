@@ -5,7 +5,7 @@ fn main() {
         .about("A tool to list information about block devices")
         .arg(
             Arg::new("device")
-                .about("Specifies the device")
+                .help("Specifies the device") // Use `.help()` instead of `.about()`
                 .required(false)
                 .takes_value(true),
         )
