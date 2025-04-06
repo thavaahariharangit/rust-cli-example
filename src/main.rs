@@ -5,9 +5,8 @@ fn main() {
         .about("A tool to list information about block devices")
         .arg(
             Arg::new("device")
-                .help("Specifies the device") // Use `.help()` instead of `.about()`
-                .required(false)
-                .takes_value(true),
+                .help("Specifies the device")
+                .required(false),
         )
         .get_matches();
 
