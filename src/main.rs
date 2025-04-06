@@ -1,25 +1,15 @@
-use clap::{Command, Arg};
-use clap::ColorChoice;
-use blkrs::run_lsblk;
+use clap::{Arg, Command};
 
 fn main() {
     let matches = Command::new("lsblk")
-        .version("0.0.1")
-        .author("Alfredo Deza")
-        .about("lsblk in Rust")
-        .color(ColorChoice::Always)
+        .about("A tool to list information about block devices")
         .arg(
             Arg::new("device")
-                .help("Device to query")
-                .required(true)
-                .index(1)
+                .about("Specifies the device")
+                .required(false)
+                .takes_value(true),
         )
         .get_matches();
 
-    if let Some(device) = matches.get_one::<String>("device") {
-        let output = serde_json::to_string(&run_lsblk(&device)).unwrap();
-        println!("{}", output);
-    } else {
-        println!("No device provided");
-    }
+    println!("{:?}", matches);
 }
